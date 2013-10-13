@@ -1,0 +1,38 @@
+<div data-role="view" id="places-view" data-id="places-view"
+     data-layout="main-layout" data-title="Places"
+     data-show="app.places.init">
+    <div id="example" class="k-content">
+            <div id="new-place">
+                <div style="margin:5px">
+                    <span>Title:</span>
+                    <input id="titleinput" data-bind=""/>
+                </div>
+
+                <div style="margin:5px">
+                <span>Start Time: </span>
+                <input id="datetimepickerstart" style="width:200px; align-content:stretch"/>
+                    </div>
+
+                <div style="margin:5px">
+                <span>End Time: </span>
+                <input id="datetimepickerend" style="width:200px; align-content:stretch"/>
+                </div>
+                
+                <div>
+                    <a data-role="button" data-bind="click: postPlace">Confirm</a>
+                    <a data-role="button" style="background-color: red" data-bind="click: clearFields">Cancel</a>
+                </div>
+            </div>
+        <script>
+            $(document).ready(function () {
+                // create DateTimePicker from input HTML element
+                $("#datetimepickerstart").kendoDateTimePicker({
+                    value: new Date()
+                });
+                $("#datetimepickerend").kendoDateTimePicker({
+                    value: new Date()
+                });
+            });
+        </script>
+        </div>
+</div>

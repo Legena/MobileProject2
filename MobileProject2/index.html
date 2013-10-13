@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8" />
+        <link href="kendo/styles/kendo.common.min.css"  rel="stylesheet"/>
+        <link href="kendo/styles/kendo.default.min.css"  rel="stylesheet"/>
+        <link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet" />
+        <link href="styles/app.css"  rel="stylesheet"/>
+
+        <script src="cordova.js"></script>
+        <script src="kendo/js/jquery.min.js"></script>
+        <script src="kendo/js/kendo.all.min.js"></script>
+        <script src="scripts/libs/rsvp.min.js"></script>
+        <script src="scripts/app/http-request.js"></script>
+        <script src="scripts/app/extensions.js"></script>
+        <script src="scripts/app/categories.js"></script>
+        <script src="scripts/app/places.js"></script>
+        <script src="scripts/app.js"></script>
+    </head>
+    <body>
+        <div id="home-view" data-id="home-view" data-role="view"
+             data-layout="main-layout" data-title="Home">
+            This is Now What?<br />
+            Have you ever wondered what to do and just wanted to hang with someone?<br />
+            Just check our places or add yours now.
+        </div>
+
+        <div data-role="layout" id="main-layout" data-id="main-layout">
+            <header data-role="header">
+                <div data-role="navbar">
+                    <span data-role="view-title"></span>
+                </div>
+            </header>
+            <footer data-role="footer">
+                <div data-role="tabstrip">
+                    <a href="#home-view" data-icon="home">Home</a>
+                    <a href="views/categories-view.html#categories-view" data-icon="bookmarks">Places</a>
+                    <a href="views/places-view.html#places-view" data-icon="add">Add New Place</a>
+                </div>
+            </footer>
+        </div>
+
+
+
+        <script id="place-template" type="text/x-kendo-template">
+            <div>
+                <h2>#:Title#</h2>
+                <span>located at: 
+                    <img src='http://maps.googleapis.com/maps/api/staticmap?size=320x320&sensor=false&markers=#:Latitude#,#:Longtitude#'/>
+                </span>
+                <div>#: EndTime#</div>
+            </div>
+        </script>
+    </body>
+</html>

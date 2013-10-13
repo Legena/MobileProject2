@@ -1,0 +1,17 @@
+<div data-role="view" id="categories-view" data-id="categories-view"
+     data-layout="main-layout" data-title="Places"
+     data-show="app.categories.init">
+    <div id="categories-holder">
+        <select id="categories-list" data-role="dropdownlist"
+                data-bind="source: categories, events: { change: change}"
+                data-text-field="Title"
+                data-value-field="Id">
+        </select>
+        <div id="category-info">
+            <h1 data-bind="text: selectedCategory.Title" data-align="center"></h1>
+            <img id="mapimage" data-bind="attr: { src: selectedCategory.LocationUrl }" style="border-radius:160px"/>
+            <ul data-role="listview" data-bind="source: selectedCategory.Id" data-template="place-template">
+            </ul>  
+        </div>
+    </div>
+</div>
