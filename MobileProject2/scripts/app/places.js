@@ -24,14 +24,21 @@ var app = app || {};
                 "latitude": position.coords.latitude,
                 "title": title.value
             }
-            console.log(JSON.stringify(place));
 
-            httpRequest.postJSON(app.servicesBaseUrl + "places", JSON.stringify(place)).then(function (data) {
-                console.log(data);
-                navigator.notification.vibrate(1000);
-            }, function (e) {
-                console.log(e);
-            })
+            if (place.startTime.toString() >= place.endTime) {
+                navigator.notification.alert("End date should be later than start.");
+            }
+            else if (place.title.length < 1) {
+                navigator.notification.alert("Title should be at least 1 character.");
+            }
+            else {
+                httpRequest.postJSON(app.servicesBaseUrl + "places", JSON.stringify(place)).then(function (data) {
+                    navigator.notification.vibrate(1000);
+                    clearFields();
+                }, function (e) {
+                    navigator.notification.alert("Add New Place Failed.");
+                })
+            }
         }
 
         function onError(error) {
@@ -42,8 +49,8 @@ var app = app || {};
     };
 
     function clearFields() {
-        var startDate = document.getElementById("datetimepickerstart").value = new Date();
-        var endDate = document.getElementById("datetimepickerend").value = new Date();
+        var startDate = document.getElementById("datetimepickerstart").value = "";
+        var endDate = document.getElementById("datetimepickerend").value = "";
         var title = document.getElementById("titleinput").value = "";
     }
     
